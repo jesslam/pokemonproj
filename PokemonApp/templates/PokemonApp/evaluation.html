@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Pokemon Evaluations</h2>
+<table class="table">
+        <tr>
+            <th>Pokemon</th>
+            <th>Attack</th>
+            <th>Defense</th>
+            <th>Stamina</th>
+            <th>IV %</th>
+            <th>Eval</th>
+        </tr>
+        {% for e in evaluation_list %}
+        <tr>
+            <td>{{ e.pokemonname }}</td>
+            <td>{{ e.attacknum }}</td>
+            <td>{{ e.defensenum }}</td>
+            <td>{{ e.staminanum }}</td>
+            <td>{{ e.IVpercent }}</td>
+            <td>{{ e.IVname }}</td>
+        </tr>
+        {% endfor %}
+        
+    </table>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Pokemon</h2>
+<a href="https://www.freepngimg.com/png/37483-pokeball-transparent-background">Pokeball Transparent Background FreePNGImg.com</a>
+<table class="table">
+    <tr>
+        <th>Pokemon</th>
+        <th>Type</th>
+        <th>CP</th>
+        <th>HP</th>
+        <th>Level</th>
+    </tr>
+    {% for p in pokemon_list %}
+    <tr>
+        <td><a href="{% url 'pokemondetail' id=p.id %}">{{ p.pokemonname }}</a></td>
+        <td>{{ p.pokemontype }}</td>
+        <td>{{ p.cp }}</td>
+        <td>{{ p.hp }}</td>
+        <td>{{ p.level }}</td>
+    </tr>
+    {% endfor %}
+    
+</table>
+{% endblock %}

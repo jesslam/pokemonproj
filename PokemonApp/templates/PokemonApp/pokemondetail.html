@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Pokemon Info</h2>
+<p>{{ poke.pokemontype }}</p>
+<p>{{ poke.typedescription }}</p>
+<p>Number of Reviews: {{ reviewcount }}</p>
+<h3>Reviews</h3>
+{% for r in reviews %}
+    <h4>{{ r.reviewtitle }}</h4>
+    <p>{{ r.reviewdate }}</p>
+    <p>{{ r.reviewtext }}</p>
+
+{% endfor %}
+{% endblock %}
