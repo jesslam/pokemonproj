@@ -45,14 +45,14 @@ def newEvaluation(request):
 def newReview(request):
     form=ReviewForm
     if request.method=='POST':
-        form=PokemonForm(request.POST)
+        form=ReviewForm(request.POST)
         if form.is_valid():
-            posted=form.save (commit=True)
+            posted=form.save(commit=True)
             posted.save()
             form=ReviewForm()
     else:
         form=ReviewForm()
-        return render(request, 'PokemonApp/newreview.html', {'form': form})
+    return render(request, 'PokemonApp/newreview.html', {'form': form})
 
 def loginMessage(request):
     return render(request, 'PokemonApp/loginmessage.html')

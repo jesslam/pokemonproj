@@ -3,7 +3,7 @@ from .models import Pokemon, PokemonType, Review, Evaluation
 from .views import index, getpokemon, pokemondetail, getevaluation
 from django.urls import reverse
 from django.contrib.auth.models import User
-import datetime
+from .forms import EvaluationForm
 
 # Create your tests here.
 
@@ -68,18 +68,20 @@ class GetPokemonTest(TestCase):
 
 class New_Evaluation_Test(TestCase):
     def setUp(self):
-        self.test_user=User.objects.create_user(username='Donna', password='P@ssw0rd1')
-        self.name=Pokemon.objects.create(pokemonname='Leafeon')
+        self.type=PokemonType.objects.create(pokemontype='Leafeon Verdant Pokemon', typedescription='It gets its nutrition from photosynthesis.  It lives a quiet life deep in forests where clean rivers flow.')
+        self.user=User.objects.create(username='Donna')
+        self.newmon=Pokemon.objects.create(pokemonname='Leafeon', pokemonbase='Eevee', pokemontype=self.type, user=self.user, cp=1915, hp=112, level=23.0)
+
 
     def test_evalForm(self):
         data={
-            'pokemonname' : self.name,
+            'pokemonname' : self.newmon,
             'attacknum' : 14,
-            'defensenum' : 14,
+            'defensenum' : 13,
             'staminanum' : 13,
             'IVpercent' : 92,
             'IVname' : 'Excellent',
-
+            
         }
         form=EvaluationForm(data=data)
         self.assertTrue(form.is_valid)
