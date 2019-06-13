@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="POST" class="post-form">
+    <table class='table'>
+        {% csrf_token %}
+        {{ form.as_table }}
+    </table>
+    <button type="submit" class="save btn btn-default">Submit</button> 
+</form>
+{% endblock %}
